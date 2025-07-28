@@ -3,7 +3,7 @@ import { Award, Users, TrendingUp, Clock } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative bg-[url('tmsbanner.jpg')] bg-cover bg-center py-20 mt-20">
+    <section className="relative bg-[url('/tmsbanner.jpg')] bg-cover bg-center py-20 mt-20">
       <div className="absolute inset-0 bg-black/50"></div>
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
