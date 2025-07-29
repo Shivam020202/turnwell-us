@@ -1,6 +1,10 @@
 import React from "react";
 
-const BottomTabBar: React.FC = () => {
+interface BottomTabBarProps {
+  onNavigate: (page: string) => void;
+}
+
+const BottomTabBar: React.FC<BottomTabBarProps> = ({ onNavigate }) => {
   return (
     <nav className="fixed bottom-0 left-0 w-full bg-white shadow-md flex justify-around items-center py-2 z-50 md:hidden">
       <a

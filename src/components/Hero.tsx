@@ -1,5 +1,5 @@
-import React from "react";
-import { Award, Users, TrendingUp, Clock } from "lucide-react";
+// import React from "react";
+import { Clock } from "lucide-react";
 
 const Hero = () => {
   return (
