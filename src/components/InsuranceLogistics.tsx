@@ -23,7 +23,7 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
       title: "Turnwell Mental Health of Alpharetta, GA",
       address: "11125 Jones Bridge Rd, Ste 100 Alpharetta, GA 30022",
       phone: "(678) 383-0008",
-      fax: "(470) 735-6656",
+      // fax: "(470) 735-6656",
       services: [
         "Medication Management",
         "TMS Therapy",
@@ -37,7 +37,7 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
       title: "Turnwell Mental Health of Charleston, SC",
       address: "600 Seacoast Parkway, Ste 200 Mt. Pleasant, SC, 29464",
       phone: "(843) 868-2005",
-      fax: "(843) 932-9089",
+      // fax: "(843) 932-9089",
       services: [
         "Medication Management",
         "TMS Therapy",
@@ -52,7 +52,7 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
       title: "Turnwell Mental Health of Aventura, FL",
       address: "2999 NE 191st St, Ste 600 Aventura, FL, 33180",
       phone: "(786) 981-0640",
-      fax: "(305) 677-8067",
+      // fax: "(305) 677-8067",
       services: ["Medication Management", "Spravato"],
     },
   ];
@@ -285,17 +285,6 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
                         </div>
                       </div>
 
-                      {/* Fax Section */}
-                      <div className="flex items-start space-x-4">
-                        <Mail className="w-5 h-5 text-gray-500 flex-shrink-0" />
-                        <div>
-                          <p className="font-medium text-gray-900">Fax</p>
-                          <p className="text-sm text-gray-600">
-                            {activeLocation.fax}
-                          </p>
-                        </div>
-                      </div>
-
                       {/* Services Offered Section */}
                       <div className="flex items-start space-x-4">
                         <List className="w-5 h-5 text-gray-500 flex-shrink-0" />
@@ -319,10 +308,7 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
                             Office Hours
                           </p>
                           <p className="text-sm text-gray-600">
-                            Monday - Friday: 8:00 AM - 6:00 PM
-                          </p>
-                          <p className="text-sm text-gray-600">
-                            Saturday: 9:00 AM - 2:00 PM
+                            Monday - Friday: 8:00 AM - 5:00 PM
                           </p>
                         </div>
                       </div>
