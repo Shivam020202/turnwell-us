@@ -230,7 +230,7 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
               id="locations"
             >
               {/* Tab Navigation for Locations */}
-              <div className="flex flex-col sm:flex-row bg-purple-600 rounded-t-xl">
+              <div className="flex flex-row overflow-scroll md:overflow-auto bg-purple-600 rounded-t-xl">
                 {locations.map((location) => (
                   <button
                     key={location.id}
