@@ -1,5 +1,5 @@
 import React from "react";
-import { Phone, Calendar, Menu } from "lucide-react";
+import { Calendar, Menu } from "lucide-react";
 
 interface HeaderProps {
   onContactClick: () => void;
@@ -82,15 +82,6 @@ const Header: React.FC<HeaderProps> = ({ onContactClick }) => {
           </nav>
 
           <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-2 text-gray-600">
-              <Phone className="w-4 h-4" />
-              <a
-                href="tel:+15551234567"
-                className="text-sm font-medium hover:text-blue-600 transition-colors"
-              >
-                (555) 123-4567
-              </a>
-            </div>
             <button
               onClick={onContactClick}
               className="bg-blue-600 text-white px-6 py-4 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center space-x-2"

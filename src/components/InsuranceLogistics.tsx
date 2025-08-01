@@ -225,7 +225,10 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
             </div>
 
             {/* Clinic Locations and Contact */}
-            <div className="bg-purple-50 rounded-xl border border-purple-100">
+            <div
+              className="bg-purple-50 rounded-xl border border-purple-100"
+              id="locations"
+            >
               {/* Tab Navigation for Locations */}
               <div className="flex flex-col sm:flex-row bg-purple-600 rounded-t-xl">
                 {locations.map((location) => (
@@ -273,9 +276,12 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
                         <Phone className="w-5 h-5 text-gray-500 flex-shrink-0" />
                         <div>
                           <p className="font-medium text-gray-900">Phone</p>
-                          <p className="text-sm text-gray-600">
+                          <a
+                            href={`tel:${activeLocation.phone}`}
+                            className="text-sm text-gray-600"
+                          >
                             {activeLocation.phone}
-                          </p>
+                          </a>
                         </div>
                       </div>
 

@@ -105,10 +105,10 @@ const FAQ = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:+15551234567"
+                href="#locations"
                 className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
               >
-                Call (555) 123-4567
+                Call Now
               </a>
               <button
                 onClick={() =>
