@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   CreditCard,
   Clock,
@@ -6,6 +6,8 @@ import {
   Phone,
   Calendar,
   FileText,
+  Mail,
+  List,
 } from "lucide-react";
 
 interface InsuranceLogisticsProps {
@@ -13,6 +15,54 @@ interface InsuranceLogisticsProps {
 }
 
 const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
+  // Define the data for each clinic location
+  const locations = [
+    {
+      id: "alpharetta",
+      tabName: "Alpharetta - GA",
+      title: "Turnwell Mental Health of Alpharetta, GA",
+      address: "11125 Jones Bridge Rd, Ste 100 Alpharetta, GA 30022",
+      phone: "(678) 383-0008",
+      fax: "(470) 735-6656",
+      services: [
+        "Medication Management",
+        "TMS Therapy",
+        "Spravato",
+        "Individual Psychotherapy",
+      ],
+    },
+    {
+      id: "charleston",
+      tabName: "Charleston - SC",
+      title: "Turnwell Mental Health of Charleston, SC",
+      address: "600 Seacoast Parkway, Ste 200 Mt. Pleasant, SC, 29464",
+      phone: "(843) 868-2005",
+      fax: "(843) 932-9089",
+      services: [
+        "Medication Management",
+        "TMS Therapy",
+        "Spravato",
+        "Individual Psychotherapy",
+        "Group Psychotherapy",
+      ],
+    },
+    {
+      id: "aventura",
+      tabName: "Aventura - FL",
+      title: "Turnwell Mental Health of Aventura, FL",
+      address: "2999 NE 191st St, Ste 600 Aventura, FL, 33180",
+      phone: "(786) 981-0640",
+      fax: "(305) 677-8067",
+      services: ["Medication Management", "Spravato"],
+    },
+  ];
+
+  // State to keep track of the currently active tab.
+  const [activeTab, setActiveTab] = useState(locations[0].id);
+
+  // Find the data for the currently active location
+  const activeLocation = locations.find((loc) => loc.id === activeTab);
+
   const insuranceProviders = [
     "Blue Cross Blue Shield",
     "Aetna",
@@ -174,60 +224,105 @@ const InsuranceLogistics = ({ onContactClick }: InsuranceLogisticsProps) => {
               </div>
             </div>
 
-            <div className="bg-purple-50 p-8 rounded-xl border border-purple-100">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="p-2 bg-purple-100 rounded-lg">
-                  <Clock className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  Office Hours & Contact
-                </h3>
+            {/* Clinic Locations and Contact */}
+            <div className="bg-purple-50 rounded-xl border border-purple-100">
+              {/* Tab Navigation for Locations */}
+              <div className="flex flex-col sm:flex-row bg-purple-600 rounded-t-xl">
+                {locations.map((location) => (
+                  <button
+                    key={location.id}
+                    onClick={() => setActiveTab(location.id)}
+                    className={`flex-1 py-4 px-2 text-center text-sm font-semibold transition-colors duration-300 ${
+                      activeTab === location.id
+                        ? "bg-purple-700 text-white border-b-2 border-white"
+                        : "text-purple-200 hover:bg-purple-500 hover:text-white"
+                    }`}
+                  >
+                    {location.tabName}
+                  </button>
+                ))}
               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-gray-500" />
-                  <div>
-                    <p className="font-medium text-gray-900">Monday - Friday</p>
-                    <p className="text-sm text-gray-600">8:00 AM - 6:00 PM</p>
-                  </div>
-                </div>
+              {/* Dynamic Content Area for the Active Tab */}
+              <div className="p-8">
+                {activeLocation && (
+                  <>
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className="p-2 bg-purple-100 rounded-lg">
+                        <Clock className="w-6 h-6 text-purple-600" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        {activeLocation.title}
+                      </h3>
+                    </div>
 
-                <div className="flex items-center space-x-3">
-                  <Clock className="w-5 h-5 text-gray-500" />
-                  <div>
-                    <p className="font-medium text-gray-900">Saturday</p>
-                    <p className="text-sm text-gray-600">9:00 AM - 2:00 PM</p>
-                  </div>
-                </div>
+                    <div className="space-y-6">
+                      {/* Address Section */}
+                      <div className="flex items-start space-x-4">
+                        <MapPin className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-gray-900">Address</p>
+                          <p className="text-sm text-gray-600">
+                            {activeLocation.address}
+                          </p>
+                        </div>
+                      </div>
 
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-gray-500" />
-                  <div>
-                    <p className="font-medium text-gray-900">Main Office</p>
-                    <p className="text-sm text-gray-600">(555) 123-4567</p>
-                  </div>
-                </div>
+                      {/* Phone Section */}
+                      <div className="flex items-start space-x-4">
+                        <Phone className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-gray-900">Phone</p>
+                          <p className="text-sm text-gray-600">
+                            {activeLocation.phone}
+                          </p>
+                        </div>
+                      </div>
 
-                <div className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-red-500" />
-                  <div>
-                    <p className="font-medium text-gray-900">Crisis Line</p>
-                    <p className="text-sm text-gray-600">(555) 911-HELP</p>
-                  </div>
-                </div>
+                      {/* Fax Section */}
+                      <div className="flex items-start space-x-4">
+                        <Mail className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-gray-900">Fax</p>
+                          <p className="text-sm text-gray-600">
+                            {activeLocation.fax}
+                          </p>
+                        </div>
+                      </div>
 
-                <div className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-gray-500" />
-                  <div>
-                    <p className="font-medium text-gray-900">Location</p>
-                    <p className="text-sm text-gray-600">
-                      123 Medical Plaza, Suite 200
-                      <br />
-                      Healthcare City, HC 12345
-                    </p>
-                  </div>
-                </div>
+                      {/* Services Offered Section */}
+                      <div className="flex items-start space-x-4">
+                        <List className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                        <div>
+                          <p className="font-medium text-gray-900">
+                            Services Offered
+                          </p>
+                          <ul className="text-sm text-gray-600 list-disc list-inside">
+                            {activeLocation.services.map((service, index) => (
+                              <li key={index}>{service}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+
+                      {/* Hardcoded Office Hours. This can be made dynamic if needed. */}
+                      <div className="flex items-start space-x-4">
+                        <Clock className="w-5 h-5 text-gray-500" />
+                        <div>
+                          <p className="font-medium text-gray-900">
+                            Office Hours
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            Monday - Friday: 8:00 AM - 6:00 PM
+                          </p>
+                          <p className="text-sm text-gray-600">
+                            Saturday: 9:00 AM - 2:00 PM
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
